@@ -496,6 +496,12 @@ slots:
     in_subset:
       - translator_minimal
 
+  atomic_number:
+    range: integer
+
+  neutron_number:
+    range: integer
+
   name:
     aliases: [ 'label', 'display name', 'title' ]
     description: >-
@@ -5936,6 +5942,15 @@ classes:
       suspensions and colloids.
     slots:
       - has constituent
+
+  isotope:
+    is_a: ChemicalSubstance
+    unique_keys:
+      main:
+        description: An isotope is uniquely identifier by atomic and neutron number
+        unique_key_slots:
+          - atomic_number
+          - neutron_number
 
   chemical substance:
     is_a: molecular entity

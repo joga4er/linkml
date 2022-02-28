@@ -109,6 +109,8 @@ class ProjectGenerator:
                 gen = gen_cls(local_path, **all_gen_args)
                 serialize_args = {'mergeimports': config.mergeimports}
                 for k, v in all_gen_args.items():
+                    if isinstance(v, bool):
+                        v = str(v)
                     serialize_args[k] = v.format(name=name, parent=parent_dir)
                 logging.info(f' ARGS: {serialize_args}')
                 gen_dump = gen.serialize(**serialize_args)
