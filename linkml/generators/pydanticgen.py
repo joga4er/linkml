@@ -92,6 +92,7 @@ class {{ c.name }}
 {% endfor %}
 """
 
+
 def _get_pyrange(t: TypeDefinition, sv: SchemaView) -> str:
     pyrange = t.repr
     if pyrange is None:
@@ -222,6 +223,7 @@ class PydanticGenerator(OOCodeGenerator):
 
     def get_mixin_identifier_range(self, mixin) -> str:
         sv = self.schemaview
+        print(mixin)
         id_ranges = list({_get_pyrange(sv.get_type(sv.get_identifier_slot(c).range), sv)
                           for c in sv.class_descendants(mixin.name, mixins=True)
                           if sv.get_identifier_slot(c) is not None})
