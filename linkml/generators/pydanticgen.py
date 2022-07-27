@@ -308,6 +308,7 @@ class PydanticGenerator(OOCodeGenerator):
                 class_def.attributes[s.name] = s
                 collection_key = None
                 if s.range in sv.all_classes():
+                    print(s)
                     pyrange = self.get_class_slot_range(s)
                 elif s.range in sv.all_enums():
                     pyrange = f'{camelcase(s.range)}'
